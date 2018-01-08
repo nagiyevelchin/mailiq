@@ -5,6 +5,7 @@
     $userCondition = new UserConditionKeeper();
     $userCondition->setId(1000, '=');
     $userCondition->setCountry('Россия', '!=', 'OR');
+    print_r($userCondition->getQuery());
 Результат 
 
     SELECT
@@ -32,6 +33,7 @@
     $userCondition2 = new UserConditionKeeper();
     $userCondition2->setCountry('Россия', '=');
     $userCondition2->setState('active', '!=');
+    print_r($userCondition2->getQuery());
 
 Результат 
 
@@ -65,6 +67,7 @@
     $condition = new UserComplexConditionKeeper();
     $condition->setCondition($userCondition3);
     $condition->setCondition($userCondition4);
+    print_r($condition->getQuery());
 
 Результат
 
@@ -109,6 +112,7 @@
     $condition2 = new UserComplexConditionKeeper();
     $condition2->setCondition($condition);
     $condition2->setCondition($userCondition5,'OR');
+    print_r($condition2->getQuery());
 
 Результат
 
