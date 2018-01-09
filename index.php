@@ -17,8 +17,13 @@ $userCondition->setId(1000, '=');
 $userCondition->setCountry('Россия', '!=', 'OR');
 
 print_r($userCondition->getQuery());
-/*$userCondition->execute();
-while($arr = $userCondition->fetch()){
+
+$begin = microtime(true);
+$userCondition->execute();
+$end = microtime(true);
+print "\nExecution time: " . ($end - $begin) . " sec\n";
+
+/*while($arr = $userCondition->fetch()){
 	print_r($arr);
 }*/
 
@@ -31,12 +36,17 @@ $userCondition2->setState(\'active\', \'!=\');
 
 ';
 $userCondition2 = new UserConditionKeeper();
-$userCondition2->setCountry('Россия', '=');
+$userCondition2->setCountry('Russia', '=');
 $userCondition2->setState('active', '!=');
 
 print_r($userCondition2->getQuery());
-/*$userCondition2->execute();
-while($arr = $userCondition2->fetch()){
+
+$begin = microtime(true);
+$userCondition2->execute();
+$end = microtime(true);
+print "\nExecution time: " . ($end - $begin) . " sec\n";
+
+/*while($arr = $userCondition2->fetch()){
 	print_r($arr);
 }*/
 
@@ -55,22 +65,28 @@ $condition->setCondition($userCondition3);
 $condition->setCondition($userCondition4);
 
 ';
+
 $userCondition3 = new UserConditionKeeper();
 $userCondition3->setState('active', '=');
-$userCondition3->setCountry('Россия', '!=', 'OR');
+$userCondition3->setCountry('Russia', '!=', 'OR');
 
 $userCondition4 = new UserConditionKeeper();
-$userCondition4->setEmail('user@domain.com', '=');
+$userCondition4->setEmail('elchin@nagiyev.net470507', '=');
 
 $condition = new UserComplexConditionKeeper();
 $condition->setCondition($userCondition3);
 $condition->setCondition($userCondition4);
 
 print_r($condition->getQuery());
+
+$begin = microtime(true);
 $condition->execute();
-while($arr = $condition->fetch()){
+$end = microtime(true);
+print "\nExecution time: " . ($end - $begin) . " sec\n";
+
+/*while($arr = $condition->fetch()){
 	print_r($arr);
-}
+}*/
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -88,15 +104,16 @@ $userCondition5->setRole('user', '!=');
 
 $condition2 = new UserComplexConditionKeeper();
 $condition2->setCondition($condition);
-$condition2->setCondition($userCondition5,'OR');
+$condition2->setCondition($userCondition5, 'OR');
 
 print_r($condition2->getQuery());
-/*$condition2->execute();
+
+$begin = microtime(true);
+$condition2->execute();
+$end = microtime(true);
+print "\nExecution time: " . ($end - $begin) . " sec\n";
+
+/*
 while($arr = $condition2->fetch()){
 	print_r($arr);
 }*/
-
-
-
-?>
-	</pre>
