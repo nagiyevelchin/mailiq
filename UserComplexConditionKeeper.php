@@ -57,6 +57,12 @@ class UserComplexConditionKeeper {
 		DPDO::execute($query['params'], $this->statement);
 	}
 
+	public function executeAll() {
+		$query = $this->getQuery(false);
+		$this->statement = DPDO::prepare($query['query']);
+		DPDO::execute($query['params'], $this->statement);
+	}
+
 	public function getQuery($with_limit = true) {
 		$sql = 'SELECT
                   us.*,
