@@ -36,7 +36,7 @@ $userCondition2->setState(\'active\', \'!=\');
 
 ';
 $userCondition2 = new UserConditionKeeper();
-$userCondition2->setCountry('Russia', '=');
+$userCondition2->setCountry('Россия', '=');
 $userCondition2->setState('active', '!=');
 
 print_r($userCondition2->getQuery());
@@ -68,10 +68,10 @@ $condition->setCondition($userCondition4);
 
 $userCondition3 = new UserConditionKeeper();
 $userCondition3->setState('active', '=');
-$userCondition3->setCountry('Russia', '!=', 'OR');
+$userCondition3->setCountry('Россия', '!=', 'OR');
 
 $userCondition4 = new UserConditionKeeper();
-$userCondition4->setEmail('elchin@nagiyev.net470507', '=');
+$userCondition4->setEmail('user@domain.com', '=');
 
 $condition = new UserComplexConditionKeeper();
 $condition->setCondition($userCondition3);
