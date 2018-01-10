@@ -23,7 +23,7 @@ $condition2 = new UserComplexConditionKeeper();
 $condition2->setCondition($userCondition);
 $condition2->setCondition($condition, 'AND');
 
-print_r($condition2->getQuery(false));
+//print_r($condition2->getQuery(false));
 
 $memory = memory_get_peak_usage(true);
 echo "real: ".($memory/1024/1024)." MiB\n\n";
